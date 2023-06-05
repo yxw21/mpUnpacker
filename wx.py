@@ -81,8 +81,10 @@ def write_file(fname, buf, mode):
     for i in range(0, len(items) - 1):
         path += "/" + items[i]
         md(path)
-
-    f = open(path + "/" + items[-1], mode)
+    if 'b' in mode: 
+        f = open(path + "/" + items[-1], mode)
+    else:
+        f = open(path + "/" + items[-1], mode , encoding='utf-8')
     f.write(buf)
     f.close()
 
